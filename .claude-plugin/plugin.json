@@ -6,6 +6,8 @@
     "name": "James Dixson",
     "email": "dixson3@gmail.com"
   },
+  "repository": "https://github.com/dixson3/rules-management",
+  "homepage": "https://github.com/dixson3/rules-management",
   "license": "MIT",
   "keywords": ["rules", "workflow", "requirements", "task-management"],
   "commands": [

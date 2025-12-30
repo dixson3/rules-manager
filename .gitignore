@@ -1,1 +1,4 @@
+# Local development files
+.envrc
+.claude/
 CLAUDE.md
