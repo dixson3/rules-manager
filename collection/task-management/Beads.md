@@ -8,7 +8,7 @@ author: dixson3
 tags: [workflow, planning, issue-tracking, dependencies]
 relationship:
   complements:
-    - design-spec
+    - edd
     - prd-workflow
   replaces:
     - simple-todos

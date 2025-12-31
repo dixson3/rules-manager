@@ -1,4 +1,4 @@
-# Rules Management Plugin
+# Rules Manager Plugin
 
 A Claude Code plugin for managing project rules. Browse, install, validate, and remove rules from a curated collection.
 
@@ -6,40 +6,40 @@ A Claude Code plugin for managing project rules. Browse, install, validate, and 
 
 ```bash
 # Install from local directory (for development)
-claude --plugin-dir /path/to/rules-management
+claude --plugin-dir /path/to/rules-manager
 
 # Or add to a marketplace and install
-claude plugin install rules-management@your-marketplace
+claude plugin install rules-manager@your-marketplace
 ```
 
 ## Usage
 
-Once installed, use the `/rules-management:rules` command:
+Once installed, use the `/rules-manager:rules` command:
 
 ```bash
 # Interactive mode - guided rule management
-/rules-management:rules
+/rules-manager:rules
 
 # List all available rules
-/rules-management:rules list
+/rules-manager:rules list
 
 # Add a rule to your project
-/rules-management:rules add beads-workflow
+/rules-manager:rules add beads-workflow
 
 # Remove a rule from your project
-/rules-management:rules remove design-spec
+/rules-manager:rules remove edd
 
 # Validate installed rules for conflicts
-/rules-management:rules validate
+/rules-manager:rules validate
 
 # Show current installation status
-/rules-management:rules status
+/rules-manager:rules status
 ```
 
 ## Plugin Structure
 
 ```
-rules-management/
+rules-manager/
 ├── .claude-plugin/
 │   └── plugin.json           # Plugin manifest
 ├── commands/
@@ -48,7 +48,7 @@ rules-management/
 │   ├── task-management/
 │   │   └── Beads.md
 │   └── requirements/
-│       ├── Design-spec.md
+│       ├── EDD.md
 │       └── PRD.md
 ├── schema/
 │   └── rule-schema.yaml      # Validation schema
@@ -61,18 +61,21 @@ rules-management/
 | Rule ID | Domain | Description |
 |---------|--------|-------------|
 | `beads-workflow` | task-management | Multi-session task tracking with dependency graphs |
-| `design-spec` | requirements | Requirements tracking using DESIGN.md |
-| `prd-workflow` | requirements | Spec-driven development using docs/PRD.md |
+| `edd` | requirements | Design decisions and implementation guides (HOW to build) |
+| `prd-workflow` | requirements | High-level product requirements (WHAT to build) |
 
 ### Rule Relationships
 
-- **beads-workflow** complements both `design-spec` and `prd-workflow`
-- **design-spec** and **prd-workflow** are alternatives (choose one)
+- **prd-workflow** and **edd** are complementary:
+  - PRD defines WHAT to build (product requirements, constraints)
+  - EDD defines HOW to build (design decisions, patterns, NFRs)
+- **beads-workflow** complements both for task tracking
 
 ### Recommended Sets
 
-1. **Beads + Design**: Task management with design specification tracking
-2. **Beads + PRD**: Task management with PRD-driven development
+1. **Complete Workflow**: Beads + PRD + EDD - full task tracking with requirements and design
+2. **Product Development**: Beads + PRD - task management with product requirements
+3. **Engineering Focus**: Beads + EDD - task management with design decisions
 
 ## Maintainer Guide
 

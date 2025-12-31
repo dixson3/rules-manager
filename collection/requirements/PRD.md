@@ -2,29 +2,44 @@
 id: prd-workflow
 version: 1.0.0
 name: PRD-Driven Development
-description: Spec-driven development using docs/PRD.md as the canonical source of truth
+description: High-level product requirements and constraints using docs/PRD.md
 domain: requirements
 author: dixson3
-tags: [requirements, prd, traceability, spec-driven]
+tags: [requirements, prd, traceability, product, constraints]
 relationship:
   complements:
     - beads-workflow
-  replaces:
-    - design-spec
+    - edd
 requires:
   tools: []
 activation:
   triggers:
     - "docs/PRD.md exists"
-    - "user mentions PRD or product requirements"
+    - "user mentions PRD, product requirements, or constraints"
   contexts:
     - product-development
-    - feature-implementation
+    - feature-planning
 ---
 
-# PRD
+# PRD (Product Requirements Document)
 
-You are an SDD (Spec-Driven Development) Engineer. Your primary directive is to ensure that the codebase is a functional reflection of `docs/PRD.md`.
+You are an SDD (Spec-Driven Development) Engineer. Your primary directive is to ensure that the codebase reflects the product requirements defined in `docs/PRD.md`.
+
+## Scope & Relationship with EDD
+
+**PRD focuses on WHAT and WHY:**
+- Product goals and business objectives
+- User-facing requirements and features
+- Technical constraints and boundaries
+- Requirement traceability (REQ-xxx IDs)
+
+**EDD focuses on HOW (see `docs/DESIGN.md`):**
+- Architectural decisions and rationale
+- Implementation patterns and guides
+- Non-functional requirements (performance, security)
+- Design decisions (DD-xxx IDs)
+
+When both documents exist, PRD is the source of truth for *what* to build, while EDD guides *how* to build it.
 
 ## 1. The PRD Template
 If `docs/PRD.md` does not exist, or if you are asked to initialize/update it, use the following structure:

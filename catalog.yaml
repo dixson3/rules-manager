@@ -1,7 +1,7 @@
 # Claude Code Rules Catalog
-# Index of available rules bundled with the rules-management plugin
+# Index of available rules bundled with the rules-manager plugin
 #
-# Use /rules-management:rules to interactively manage rules in your project
+# Use /rules-manager:rules to interactively manage rules in your project
 
 catalog:
   version: "1.0.0"
@@ -17,7 +17,7 @@ domains:
   requirements:
     description: "Specification, traceability, and requirements tracking"
     rules:
-      - design-spec
+      - edd
       - prd-workflow
 
 # Full rule index
@@ -34,48 +34,52 @@ rules:
     requires:
       tools: [bd]
     relationship:
-      complements: [design-spec, prd-workflow]
+      complements: [edd, prd-workflow]
       replaces: [simple-todos]
 
-  design-spec:
-    name: "Design Specification Workflow"
-    description: "Requirements tracking and validation using DESIGN.md as the source of truth"
+  edd:
+    name: "Engineering Design Document Rules"
+    description: "Design decisions, implementation guides, and architectural patterns using docs/DESIGN.md"
     domain: requirements
-    file: "Design-spec.md"
-    path: "collection/requirements/Design-spec.md"
+    file: "EDD.md"
+    path: "collection/requirements/EDD.md"
     version: "1.0.0"
     author: dixson3
-    tags: [requirements, specifications, traceability, validation]
+    tags: [design, architecture, implementation, patterns, nfr]
     relationship:
       complements: [beads-workflow, prd-workflow]
       replaces: []
 
   prd-workflow:
     name: "PRD-Driven Development"
-    description: "Spec-driven development using docs/PRD.md as the canonical source of truth"
+    description: "High-level product requirements and constraints using docs/PRD.md"
     domain: requirements
     file: "PRD.md"
     path: "collection/requirements/PRD.md"
     version: "1.0.0"
     author: dixson3
-    tags: [requirements, prd, traceability, spec-driven]
+    tags: [requirements, prd, traceability, product, constraints]
     relationship:
-      complements: [beads-workflow]
-      replaces: [design-spec]
+      complements: [beads-workflow, edd]
+      replaces: []
 
 # Compatibility matrix
-# Shows which rules work well together and which are alternatives
+# Shows which rules work well together
 compatibility:
   recommended_sets:
-    - name: "Full Workflow (Beads + Design)"
-      rules: [beads-workflow, design-spec]
-      description: "Task management with design specification tracking"
+    - name: "Complete Workflow"
+      rules: [beads-workflow, prd-workflow, edd]
+      description: "Full workflow: task tracking + product requirements (PRD) + design decisions (EDD)"
 
-    - name: "Full Workflow (Beads + PRD)"
+    - name: "Product Development"
       rules: [beads-workflow, prd-workflow]
-      description: "Task management with PRD-driven development"
+      description: "Task management with high-level product requirements"
 
-  conflicts:
-    - rules: [design-spec, prd-workflow]
-      reason: "Both address requirements tracking with different approaches"
-      resolution: "Choose one based on preference: DESIGN.md (design-spec) or docs/PRD.md (prd-workflow)"
+    - name: "Engineering Focus"
+      rules: [beads-workflow, edd]
+      description: "Task management with design decisions and implementation guides"
+
+  # PRD and EDD are complementary:
+  # - PRD: WHAT to build (product requirements, constraints)
+  # - EDD: HOW to build (design decisions, patterns, NFRs)
+  conflicts: []

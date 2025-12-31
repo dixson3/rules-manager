@@ -74,7 +74,7 @@ collection/
 ├── task-management/
 │   └── Beads.md
 └── requirements/
-    ├── Design-spec.md
+    ├── EDD.md
     └── PRD.md
 ```
 
@@ -91,20 +91,20 @@ Each rule has YAML frontmatter with these fields:
 
 ## Example Interactions
 
-User: `/rules-management:rules`
+User: `/rules-manager:rules`
 → Enter interactive mode, ask what they want to do
 
-User: `/rules-management:rules list`
+User: `/rules-manager:rules list`
 → Show all available rules with install status
 
-User: `/rules-management:rules add beads-workflow`
+User: `/rules-manager:rules add beads-workflow`
 → Install the beads-workflow rule to .claude/rules/
 
-User: `/rules-management:rules remove design-spec`
-→ Remove design-spec from .claude/rules/
+User: `/rules-manager:rules remove edd`
+→ Remove edd from .claude/rules/
 
-User: `/rules-management:rules validate`
+User: `/rules-manager:rules validate`
 → Check installed rules for conflicts
 
-User: `/rules-management:rules status`
+User: `/rules-manager:rules status`
 → Show what's installed and validation state
