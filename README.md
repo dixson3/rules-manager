@@ -17,8 +17,14 @@ claude plugin install rules-manager@dixson3/rules-manager
 ### Local Development
 
 ```bash
+# Test from any project directory
 claude --plugin-dir /path/to/rules-manager
+
+# With debug output
+claude --debug --plugin-dir /path/to/rules-manager
 ```
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for full development setup.
 
 ## Usage
 
@@ -76,44 +82,12 @@ Rules installed to `.claude/rules/` are automatically loaded by Claude Code.
 
 ## Contributing
 
-### Adding a New Rule
+We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for:
 
-1. Create `collection/<domain>/<RuleName>.md` with frontmatter:
-
-```yaml
----
-id: my-rule-id
-version: 1.0.0
-name: Human Readable Name
-description: Brief description (< 160 chars)
-domain: task-management
-author: your-github-username
-tags: [relevant, tags]
-relationship:
-  complements: []
-  replaces: []
----
-
-# Rule Title
-
-Your rule content here...
-```
-
-2. Add an entry to `catalog.yaml`
-3. Test with `/rules-manager:rules list`
-
-### Domain Taxonomy
-
-| Domain | Description |
-|--------|-------------|
-| `task-management` | Work tracking, issues, sprints |
-| `requirements` | PRDs, design docs, specifications |
-| `code-quality` | Style, patterns, architecture |
-| `version-control` | Git workflows, branching |
-| `testing` | Test strategy, coverage |
-| `documentation` | READMEs, API docs |
-| `security` | Auth, secrets, OWASP |
-| `deployment` | CI/CD, releases |
+- Development setup and testing
+- Adding new rules
+- Domain taxonomy
+- Validation requirements
 
 ## License
 

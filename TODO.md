@@ -14,6 +14,7 @@ Track pending, proposed, and completed work for the rules-manager plugin.
 - [x] Create catalog.yaml with rule metadata and relationships
 - [x] Create schema/rule-schema.yaml for validation
 - [x] Document recommended workflow sets in catalog
+- [x] Create CONTRIBUTING.md with development setup instructions
 
 ## In Progress
 
