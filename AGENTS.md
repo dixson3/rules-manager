@@ -58,11 +58,11 @@ code-manager/
 
 ## Available Rules
 
-| Rule ID | Domain | Description |
-|---------|--------|-------------|
-| `beads-workflow` | task-management | Multi-session task tracking with dependency graphs |
-| `edd` | requirements | Design decisions and implementation guides (HOW to build) |
-| `prd-workflow` | requirements | High-level product requirements (WHAT to build) |
+| Rule ID          | Domain          | Description                                               |
+| ---------------- | --------------- | --------------------------------------------------------- |
+| `beads-workflow` | task-management | Multi-session task tracking with dependency graphs        |
+| `edd`            | requirements    | Design decisions and implementation guides (HOW to build) |
+| `prd-workflow`   | requirements    | High-level product requirements (WHAT to build)           |
 
 ### Rule Relationships
 
@@ -103,7 +103,6 @@ activation:
   triggers: []
   contexts: []
 ---
-
 # Rule Title
 
 Rule content here...
@@ -117,28 +116,30 @@ Rule content here...
 Rules must satisfy:
 
 **Structural:**
+
 - `id` is kebab-case (`^[a-z][a-z0-9-]*$`)
 - `version` is semver (`X.Y.Z`)
 - `domain` exists in taxonomy
 - `description` < 160 characters
 
 **Semantic:**
+
 - No circular replacements (A replaces B, B replaces A)
 - No complement-replace conflicts
 - Same-domain rules should declare relationship
 
 ### Domain Taxonomy
 
-| Domain | Description |
-|--------|-------------|
-| `task-management` | Work tracking, issues, sprints |
-| `requirements` | PRDs, design docs, specifications |
-| `code-quality` | Style, patterns, architecture |
-| `version-control` | Git workflows, branching |
-| `testing` | Test strategy, coverage |
-| `documentation` | READMEs, API docs |
-| `security` | Auth, secrets, OWASP |
-| `deployment` | CI/CD, releases |
+| Domain            | Description                       |
+| ----------------- | --------------------------------- |
+| `task-management` | Work tracking, issues, sprints    |
+| `requirements`    | PRDs, design docs, specifications |
+| `code-quality`    | Style, patterns, architecture     |
+| `version-control` | Git workflows, branching          |
+| `testing`         | Test strategy, coverage           |
+| `documentation`   | READMEs, API docs                 |
+| `security`        | Auth, secrets, OWASP              |
+| `deployment`      | CI/CD, releases                   |
 
 ## Claude Instructions
 
@@ -149,3 +150,7 @@ When maintaining this plugin:
 3. Check compatibility when rules share a domain
 4. Ensure frontmatter is complete and accurate
 5. Test the `/rules` command after changes
+
+## Rule Versioning
+
+- whenever a rule is modified increment the version of the rule using semver principals
